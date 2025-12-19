@@ -1,5 +1,6 @@
 package com.example.questapi.repositori
 
+import com.example.questapi.apiservice.ServiceApiSiswa
 import com.example.questapi.modeldata.DataSiswa
 import retrofit2.Response
 
@@ -10,6 +11,6 @@ interface RepositoryDataSiswa{
 class JaringanRepositorySiswa (
     private val serviceApiSiswa: ServiceApiSiswa
 ): RepositoryDataSiswa{
-    override suspend fun getDataSiswa(): List<DataSiswa> = serviceApiSiswa.getSiswa()
-    override suspend fun postDataSiswa(dataSiswa: DataSiswa):retrofit2.Response<Void> =serviceApiSiswa.postSiswa(dataSiswa)
+    override suspend fun getDataSiswa() : List<DataSiswa> = serviceApiSiswa.getSiswa()
+    override suspend fun postDataSiswa(dataSiswa: DataSiswa) :retrofit2.Response<Void> = serviceApiSiswa.postSiswa(dataSiswa)
 }
