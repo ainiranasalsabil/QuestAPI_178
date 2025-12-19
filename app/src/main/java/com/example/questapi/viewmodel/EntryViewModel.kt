@@ -31,3 +31,25 @@ class EntryViewModel(
         )
     }
 
+    suspend fun addSiswa() {
+        if (!validasiInput()) {
+            println("Validasi gagal")
+            return
+        }
+
+        try {
+            val response = repositoryDataSiswa.postDataSiswa(
+                uiStateSiswa.detailSiswa.toDataSiswa()
+            )
+
+            if (response.isSuccessful) {
+                println("Sukses tambah data")
+            } else {
+                println("Gagal: ${response.errorBody()?.string()}")
+            }
+
+        } catch (e: Exception) {
+            println("Error kirim data: ${e.message}")
+        }
+    }
+}
