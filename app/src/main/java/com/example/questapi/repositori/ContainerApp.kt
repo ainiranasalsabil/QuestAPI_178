@@ -23,3 +23,15 @@ class DefaultContainerApp : ContainerApp {
         .addInterceptor(logging)
         .build()
 
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(
+            Json {
+                ignoreUnknownKeys = true
+                prettyPrint = true
+                isLenient = true
+            }.asConverterFactory("application/json".toMediaType())
+        )
+        .client(klien)
+        .build()
+
