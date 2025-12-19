@@ -15,8 +15,8 @@ interface ContainerApp {
 
 class DefaultContainerApp : ContainerApp {
     private val baseUrl = "http://10.0.2.2/umvTI/"
-    val logging= HttpLoggingInterceptor().apply {
-        level= HttpLoggingInterceptor.Level.BODY
+    val logging = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
     }
 
     val klien = OkHttpClient.Builder()
@@ -42,11 +42,11 @@ class DefaultContainerApp : ContainerApp {
     override val repositoryDataSiswa: RepositoryDataSiswa by lazy {
         JaringanRepositorySiswa(retrofitService)
     }
-    class AplikasiDataSiswa : Application() {
-        lateinit var container: ContainerApp
-        override fun onCreate() {
-            super.onCreate()
-            this.container = DefaultContainerApp()
-        }
+}
+class AplikasiDataSiswa : Application() {
+    lateinit var containerApp: ContainerApp
+    override fun onCreate() {
+        super.onCreate()
+        containerApp = DefaultContainerApp()
     }
 }
