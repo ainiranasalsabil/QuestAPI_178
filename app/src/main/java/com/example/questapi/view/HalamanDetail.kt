@@ -1,6 +1,7 @@
 package com.example.questapi.view
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,4 +25,13 @@ fun DetailSiswaScreen(
                 canNavigateBack = true,
                 navigateUp = navigateBack
             )
-        },
+        },floatingActionButton = {
+            val uiState = viewModel.statusUiDetail
+            FloatingActionButton (
+                onClick = {
+                    when (uiState) {
+                        is StatusUiDetaail.Success ->
+                            navigateToEditItem(uiState.status.id)
+                        else -> {}
+                    }
+                },
