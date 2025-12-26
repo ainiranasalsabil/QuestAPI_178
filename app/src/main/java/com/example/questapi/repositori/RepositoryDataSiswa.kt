@@ -7,6 +7,9 @@ import retrofit2.Response
 interface RepositoryDataSiswa{
     suspend fun getDataSiswa() : List<DataSiswa>
     suspend fun postDataSiswa(dataSiswa: DataSiswa) :retrofit2.Response<Void>
+    suspend fun getSatuSiswa(idSiswa: Int): DataSiswa
+    suspend fun  editStatusSiswa()
+
 }
 class JaringanRepositorySiswa (
     private val serviceApiSiswa: ServiceApiSiswa
