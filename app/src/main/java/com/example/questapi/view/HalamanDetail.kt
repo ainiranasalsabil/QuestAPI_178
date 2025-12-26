@@ -1,5 +1,7 @@
 package com.example.questapi.view
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -77,4 +79,12 @@ private fun BodyDetailDataSiswa(
     statusUiDetail: StatusUiDetail,
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
-)
+){
+    Column (
+        modifier = modifier.padding(
+            dimensionResource(id = R.dimen.padding_medium)
+        ),
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(id = R.dimen.padding_medium)
+        )
+    )
