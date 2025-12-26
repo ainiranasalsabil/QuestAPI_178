@@ -111,9 +111,20 @@ private fun BodyDetailDataSiswa(
         modifier = Modifier.fillMaxWidth()
         ) {
         Text(text = stringResource(R.string.delete))
-    }   if (deleteConfirmationRequired) {
+        }
+        if (deleteConfirmationRequired) {
         DeleteConfirmationDialog(
             onDeleteConfirm = {
                 deleteConfirmationRequired = false
                 onDelete()
+            },onDeleteCancel = {
+                deleteConfirmationRequired = false
             },
+            modifier = Modifier.padding(
+                dimensionResource(id = R.dimen.padding_medium)
+            )
+        )
+        }
+    }
+}
+
