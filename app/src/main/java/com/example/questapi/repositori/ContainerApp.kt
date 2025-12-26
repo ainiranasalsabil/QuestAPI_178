@@ -9,14 +9,16 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
-interface ContainerApp {
+interface ContainerApp{
     val repositoryDataSiswa: RepositoryDataSiswa
 }
 
-class DefaultContainerApp : ContainerApp {
-    private val baseUrl = "http://10.0.2.2/umyTI/"
+class DefaultContainerApp : ContainerApp{
+    private val baseurl = "http://10.0.2.2/umyTI/"
+
     val logging = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level= HttpLoggingInterceptor.Level.BODY
+
     }
 
     val klien = OkHttpClient.Builder()
@@ -24,7 +26,7 @@ class DefaultContainerApp : ContainerApp {
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
+        .baseUrl(baseurl)
         .addConverterFactory(
             Json {
                 ignoreUnknownKeys = true
@@ -40,9 +42,9 @@ class DefaultContainerApp : ContainerApp {
     }
 
     override val repositoryDataSiswa: RepositoryDataSiswa by lazy {
-        JaringanRepositorySiswa(retrofitService)
-    }
+        JaringanRepositoryDataSiswa(retrofitService) }
 }
+
 class AplikasiDataSiswa : Application() {
     lateinit var containerApp: ContainerApp
     override fun onCreate() {

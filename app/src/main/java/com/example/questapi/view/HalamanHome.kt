@@ -50,7 +50,7 @@ fun HomeScreen(
     // edit 2.4 : tambahkan parameter navigateToItemUpdate
     navigateToItemUpdate: (Int) -> Unit,
     modifier: Modifier = Modifier,
-    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel .Factory)
+    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -194,7 +194,7 @@ fun ItemSiswa(
                 contentDescription = null
             )
             Text(
-                text = siswa.telpon.toString(),
+                text = siswa.telpon,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(

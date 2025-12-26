@@ -10,24 +10,24 @@ import com.example.questapi.modeldata.toDataSiswa
 import com.example.questapi.repositori.RepositoryDataSiswa
 
 class EntryViewModel(
-    private val repositoryDataSiswa: RepositoryDataSiswa
+private val repositoryDataSiswa: RepositoryDataSiswa
 ) : ViewModel() {
 
     var uiStateSiswa by mutableStateOf(UIStateSiswa())
-        private set
+    private set
 
-    private fun validasiInput(
+            private fun validasiInput(
         uiState: DetailSiswa = uiStateSiswa.detailSiswa
     ): Boolean {
         return uiState.nama.isNotBlank()
                 && uiState.alamat.isNotBlank()
                 && uiState.telpon.isNotBlank()
-                && uiState.telpon.all { it.isDigit() }
+                && uiState.telpon.all { it.isDigit() } // 🔴 PENTING
     }
 
     fun updateUiState(detailSiswa: DetailSiswa) {
         uiStateSiswa = UIStateSiswa(
-            detailSiswa= detailSiswa,
+            detailSiswa = detailSiswa,
             isEntryValid = validasiInput(detailSiswa)
         )
     }
