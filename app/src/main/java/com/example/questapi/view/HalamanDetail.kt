@@ -111,4 +111,9 @@ private fun BodyDetailDataSiswa(
         modifier = Modifier.fillMaxWidth()
         ) {
         Text(text = stringResource(R.string.delete))
-    }
+    }   if (deleteConfirmationRequired) {
+        DeleteConfirmationDialog(
+            onDeleteConfirm = {
+                deleteConfirmationRequired = false
+                onDelete()
+            },
