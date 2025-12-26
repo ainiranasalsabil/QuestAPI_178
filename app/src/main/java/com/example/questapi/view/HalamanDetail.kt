@@ -2,6 +2,7 @@ package com.example.questapi.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -11,7 +12,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -87,4 +90,17 @@ private fun BodyDetailDataSiswa(
         verticalArrangement = Arrangement.spacedBy(
             dimensionResource(id = R.dimen.padding_medium)
         )
-    )
+    ){
+        var deleteConfirmationRequired by rememberSaveable {
+            mutableStateOf(false)
+        }
+
+        when (statusUiDetail) {
+            is StatusUiDetail.Success -> {
+                DetailDataSiswa(
+                    siswa = statusUiDetail.status.siswa,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            else -> {}
+        }
