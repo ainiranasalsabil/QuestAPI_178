@@ -1,4 +1,7 @@
 package com.example.questapi.uiconroller.route
 
-object DestinasiDetail {
+import com.example.questapi.R
+
+object DestinasiDetail : DestinasiNavigasi {
+
 }
