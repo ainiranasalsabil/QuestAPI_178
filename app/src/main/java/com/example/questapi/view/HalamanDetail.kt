@@ -1,10 +1,13 @@
 package com.example.questapi.view
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.questapi.uiconroller.route.DestinasiDetail
@@ -34,4 +37,8 @@ fun DetailSiswaScreen(
                             navigateToEditItem(uiState.status.id)
                         else -> {}
                     }
-                },
+                },shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(
+                    dimensionResource(id = R.dimen.padding_large)
+                )
+            )
